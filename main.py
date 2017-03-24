@@ -1,3 +1,17 @@
+#     Roman Numeral Generator; Given a decimal number the roman numeral equivalent will be generated.
+#     Copyright (C) 2017  Elliott Sobek
+#
+#     This program is free software: you can redistribute it and/or modify
+#     it under the terms of the GNU General Public License as published by
+#     the Free Software Foundation, either version 3 of the License, or
+#     (at your option) any later version.
+#
+#     This program is distributed in the hope that it will be useful,
+#     but WITHOUT ANY WARRANTY; without even the implied warranty of
+#     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#     GNU General Public License for more details.
+
+
 def place_rom_sym():
     result = []
     # rules for adding symbols
@@ -31,6 +45,9 @@ def decompose_once(integer):
 
 
 def main():
+    print("Roman Numeral Generator  Copyright (C) 2017  Elliott Sobek\n"
+          "This program comes with ABSOLUTELY NO WARRANTY.\n"
+          "This is free software, and you are welcome to redistribute it under certain conditions.\n")
     try:
         u_in = int(input("Enter a number: "))
     except ValueError:
