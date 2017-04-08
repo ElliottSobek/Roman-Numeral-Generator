@@ -70,11 +70,56 @@ def long_decompose(integer):
             pair = item
         result = integer // prev
         if result != 0:
-            print(pair[1] * result) # place_roam_sym
-            #place_rom_sym(pair[1] * result, integer)
+            # print(pair[1] * result) # place_roam_sym
+            # place_rom_sym(pair[1] * result, integer)
+            number.append(pair[1] * result)
             integer -= prev * result
             result %= prev
     return
+
+# if numeber is == next closes up - down from that
+#     is a subtraction of the lesser number from the bigger
+#     decompose numbers out
+# if number is == next closes down + down from that
+#     is an addition of the lesser of the lesser
+#     decompose numbers out
+# else decompose regular and place (not to sure where END?)
+
+
+def is_subtraction(num):
+    result = []
+    prev = (0, 0)
+
+    if num == 1:
+        return False
+
+    for item in numeral_lookup:
+        if (num == (item[0] - prev[0])) and (num != (item[0] // 2)):
+            result.append(item[1])
+            result.insert(0, prev[1])
+            num -= (item[0] - prev[0])
+            return True
+        prev = item
+    # return result
+    return False
+
+
+def is_addition(num):
+    result = []
+    prev = (0, 0)
+
+    if num == 1:
+        return False
+
+    for item in numeral_lookup:
+        if num == (item[0] + prev[0]):
+            result.append(item[1])
+            result.append(prev[1])
+            num -= (item[0] + prev[0])
+            return True
+        prev = item
+    # return result
+    return False
 
 
 def main():
@@ -87,7 +132,21 @@ def main():
         print("Invalid input")
         return
     # decompose(u_in)
-    long_decompose(u_in)
+    if is_subtraction(4):
+        print("Yes1")
+    if is_subtraction(5):
+        print("Yes2")
+    if is_addition(6):
+        print("Yes3")
+    if is_addition(5):
+        print("Yes4")
+    if is_addition(100):
+        print("Yes5")
+    if is_addition(1):
+        print("Yes6")
+    if is_subtraction(1):
+        print("Yes7")
+    # long_decompose(u_in)
     return
 
 main()
