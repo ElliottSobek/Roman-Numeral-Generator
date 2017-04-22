@@ -26,12 +26,22 @@ def is_subtraction(num):  # Logic problem where a subtraction only goes on depth
 
     for item in numeral_lookup:
         if (num == (item[0] - prev[0])) and (num != (item[0] // 2)):
+            result.append(prev[1])
             result.append(item[1])
-            result.insert(0, prev[1])
             num -= (item[0] - prev[0])
             return True
         prev = item
     # return result
+    item = numeral_lookup
+    prev = numeral_lookup
+    for i in range(1, 3, 1):  # Forward
+        for j in range(i, -1, -1):  # Backwards
+            prev2 = prev[j]
+            if (num == (item[i][0] - prev2[0])) and (num != (item[i][0] // 2)):
+                result.append(prev2[1])
+                result.append(item[i][1])
+                num -= (item[i][0] - prev2[0])
+                return True
     return False
 
 
@@ -94,6 +104,7 @@ def main():
     #     print("Invalid input")
     #     return
     # print(decompose(u_in))
+    print(is_subtraction(9))
     #print(generate_numeral(3))
     #print(generate_numeral(4))
     #print(generate_numeral(5))
