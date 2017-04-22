@@ -13,35 +13,36 @@
 
 
 def generate_numeral(num):
-    numeral_lookup = [(1, 'I'), (5, 'V'), (10, 'X'), (50, 'L'), (100, 'C'), (500, 'D'), (1000, 'M'), (5000, '\u2181'),
-                      (10000, '\u2182'), (50000, '\u2187'), (100000, '\u2188')]
+    num_lookup = [(1, 'I'), (5, 'V'), (10, 'X'), (50, 'L'), (100, 'C'), (500, 'D'), (1000, 'M'), (5000, '\u2181'),
+                  (10000, '\u2182'), (50000, '\u2187'), (100000, '\u2188')]
     result = []
+
     while num != 0:
 
-        for i in range(1, len(numeral_lookup), 1):
-            for j in range(i - 1, -1, -1):
-                prev2 = numeral_lookup[j]
-                if (num == (numeral_lookup[i][0] - prev2[0])) and (num != (numeral_lookup[i][0] // 2)):
-                    result.append(prev2[1])
-                    result.append(numeral_lookup[i][1])
-                    num -= (numeral_lookup[i][0] - prev2[0])
+        for f_i in range(1, len(num_lookup), 1):  # f_i: forward index
+            for b_i in range(f_i - 1, -1, -1):  # b_i: backwards index
+                prev_asoc = num_lookup[b_i]
+                if (num == (num_lookup[f_i][0] - prev_asoc[0])) and (num != (num_lookup[f_i][0] // 2)):
+                    result.append(prev_asoc[1])
+                    result.append(num_lookup[f_i][1])
+                    num -= (num_lookup[f_i][0] - prev_asoc[0])
                     break
-                elif num == (numeral_lookup[i][0] + prev2[0]):
-                    result.append(numeral_lookup[i][1])
-                    result.append(prev2[1])
-                    num -= (numeral_lookup[i][0] + prev2[0])
+                elif num == (num_lookup[f_i][0] + prev_asoc[0]):
+                    result.append(num_lookup[f_i][1])
+                    result.append(prev_asoc[1])
+                    num -= (num_lookup[f_i][0] + prev_asoc[0])
                     break
 
         if num == 0:
             break
 
-        prev = (1, 'I')
-        for item in numeral_lookup:
-            if num < item[0]:
-                result.append(prev[1])
-                num -= prev[0]
+        prev_asoc = (1, 'I')
+        for num_asoc in num_lookup:
+            if num < num_asoc[0]:
+                result.append(prev_asoc[1])
+                num -= prev_asoc[0]
                 break
-            prev = item
+            prev_asoc = num_asoc
 
     return ''.join(result)
 
@@ -51,11 +52,11 @@ def main():
           "This program comes with ABSOLUTELY NO WARRANTY.\n"
           "This is free software, and you are welcome to redistribute it under certain conditions.\n")
     try:
-        u_in = int(input("Enter a number: "))
+        usr_in = int(input("Enter a number: "))
     except ValueError:
         print("Invalid input")
         return
-    print(generate_numeral(u_in))
+    print(generate_numeral(usr_in))
     return
 
 main()
