@@ -33,10 +33,9 @@ def is_subtraction(num):  # Logic problem where a subtraction only goes on depth
         prev = item
     # return result
     item = numeral_lookup
-    prev = numeral_lookup
-    for i in range(1, 3, 1):  # Forward
-        for j in range(i, -1, -1):  # Backwards
-            prev2 = prev[j]
+    for i in range(1, 3, 1):
+        for j in range(i - 1, -1, -1):
+            prev2 = item[j]
             if (num == (item[i][0] - prev2[0])) and (num != (item[i][0] // 2)):
                 result.append(prev2[1])
                 result.append(item[i][1])
