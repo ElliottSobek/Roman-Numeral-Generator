@@ -17,9 +17,6 @@ def generate_numeral(num):
                       (10000, '\u2182'), (50000, '\u2187'), (100000, '\u2188')]
     result = []
     while num != 0:
-        if num == 1:
-            result.append('I')
-            break
 
         for i in range(1, len(numeral_lookup), 1):
             for j in range(i - 1, -1, -1):
