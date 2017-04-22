@@ -21,7 +21,7 @@ def is_subtraction(num):
     result = []
     item = numeral_lookup
 
-    for i in range(1, len(numeral_lookup), 1):
+    for i in range(1, len(item), 1):
         for j in range(i - 1, -1, -1):
             prev2 = item[j]
             if (num == (item[i][0] - prev2[0])) and (num != (item[i][0] // 2)):
@@ -34,19 +34,16 @@ def is_subtraction(num):
 
 def is_addition(num):
     result = []
-    prev = (0, 0)
-
-    if num == 1:
-        return False
-
-    for item in numeral_lookup:
-        if num == (item[0] + prev[0]):
-            result.append(item[1])
-            result.append(prev[1])
-            num -= (item[0] + prev[0])
-            return True
-        prev = item
-    # return result
+    item = numeral_lookup
+    
+    for i in range(1, len(item), 1):
+        for j in range(i - 1, -1, -1):
+            prev2 = item[j]
+            if num == (item[i][0] + prev2[0]):
+                result.append(item[i][1])
+                result.append(prev2[1])
+                num -= (item[i][0] + prev2[0])
+                return True
     return False
 
 
@@ -91,17 +88,17 @@ def main():
     #     print("Invalid input")
     #     return
     # print(decompose(u_in))
-    print(is_subtraction(9))
-    #print(generate_numeral(3))
-    #print(generate_numeral(4))
-    #print(generate_numeral(5))
-    #print(generate_numeral(6))
-    #print(generate_numeral(8))
+    # print(generate_numeral(3))
+    # print(generate_numeral(4))
+    # print(generate_numeral(5))
+    # print(generate_numeral(6))
+    # print(generate_numeral(8))
     # print(generate_numeral(39))
-    #print(generate_numeral(73))
-    #print(generate_numeral(124))
-    #print(generate_numeral(578))
-    #print(generate_numeral(9999))
+    # print(generate_numeral(73))
+    # print(generate_numeral(124))
+    # print(generate_numeral(578))
+    # print(generate_numeral(9999))
+    print(is_addition(60))
     return
 
 
