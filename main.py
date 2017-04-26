@@ -12,6 +12,37 @@
 #     GNU General Public License for more details.
 
 
+def recurse_gn(num):
+    if num == 0:
+        return
+
+    num_lookup = [(1, 'I'), (5, 'V'), (10, 'X'), (50, 'L'), (100, 'C'), (500, 'D'), (1000, 'M'), (5000, '\u2181'),
+                  (10000, '\u2182'), (50000, '\u2187'), (100000, '\u2188')]
+
+    for f_i in range(1, len(num_lookup), 1):  # f_i: forward index
+        for b_i in range(f_i - 1, -1, -1):  # b_i: backwards index
+            prev_asoc = num_lookup[b_i]
+            if (num == (num_lookup[f_i][0] - prev_asoc[0])) and (num != (num_lookup[f_i][0] // 2)):
+                print(prev_asoc[1] + num_lookup[f_i][1], end='')
+                num -= (num_lookup[f_i][0] - prev_asoc[0])
+                recurse_gn(num)
+                return
+            elif num == (num_lookup[f_i][0] + prev_asoc[0]):
+                print(num_lookup[f_i][1] + prev_asoc[1], end='')
+                num -= (num_lookup[f_i][0] + prev_asoc[0])
+                recurse_gn(num)
+                return
+
+    prev_asoc = (1, 'I')
+    for num_asoc in num_lookup:
+        if num < num_asoc[0]:
+            print(prev_asoc[1], end='')
+            num -= prev_asoc[0]
+            recurse_gn(num)
+            return
+        prev_asoc = num_asoc
+
+
 def generate_numeral(num):
     num_lookup = [(1, 'I'), (5, 'V'), (10, 'X'), (50, 'L'), (100, 'C'), (500, 'D'), (1000, 'M'), (5000, '\u2181'),
                   (10000, '\u2182'), (50000, '\u2187'), (100000, '\u2188')]
