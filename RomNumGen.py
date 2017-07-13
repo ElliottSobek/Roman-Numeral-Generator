@@ -94,12 +94,12 @@ def main(argv):
             return
 
     try:
-        opts = getopt.getopt(argv, "hr")
+        opts, args = getopt.getopt(argv, "hr")
     except getopt.GetoptError:
         print("python3 RomNumGen.py [-hr] <unsigned int>")
         return
 
-    for opt in opts:
+    for opt, args in opts:
         if opt == "-h":
             print("Usage: python3 RomNumGen.py [-hr] <unsigned int>\n\n"
                   "\t-h\tHelp\n\n"
