@@ -89,10 +89,6 @@ def generate_numeral(num):
 def main(argv):
     recurse = False
 
-    print("Roman Numeral Generator  Copyright (C) 2017  Elliott Sobek\n"
-          "This program comes with ABSOLUTELY NO WARRANTY.\n"
-          "This is free software, and you are welcome to redistribute it under certain conditions.\n")
-
     if len(sys.argv) < 2 or len(sys.argv) > 3:
             print("Usage: python3 RomNumGen.py [-hr]")
             return
@@ -121,6 +117,10 @@ def main(argv):
     if usr_in < 1:
         print("Error: Number is less than 1")
         return
+
+    print("Roman Numeral Generator  Copyright (C) 2017  Elliott Sobek\n"
+          "This program comes with ABSOLUTELY NO WARRANTY.\n"
+          "This is free software, and you are welcome to redistribute it under certain conditions.\n")
 
     if recurse:
         print(recurse_gn(usr_in))
