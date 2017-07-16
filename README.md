@@ -1,7 +1,7 @@
 # Roman-Numeral-Generator
 Given a number, the program outputs the corresponding roman numeral.
 
-Can be run in any python IDE or unix like environment that's had at least python 3.6.1 installed.
+Can be run in any python IDE or unix like environment that has at least python 3.6.1 installed.
 
 Can generate a roman numeral procedurally or recursive given passed command line arguments.
 
