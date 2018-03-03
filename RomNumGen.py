@@ -96,32 +96,32 @@ def main(argc=len(sys.argv), argv=sys.argv):
 
     if argc < 2 or argc > 3:
         print("Usage: python3 " + basename(argv[0]) + " [-hr]")
-        return
+        sys.exit(1)
 
     try:
-        opts, args = getopt.getopt(argv, "hr")
-    except getopt.GetoptError:
-        print("python3 " + basename(argv[0]) + " [-hr] <unsigned int>")
-        return
+        opts, args = getopt.getopt(argv[1:], "hr")
+    except getopt.GetoptError as e:
+        print(e.msg)
+        sys.exit(1)
 
     for opt, args in opts:
         if opt == "-h":
             print("Usage: python3 " + basename(argv[0]) + " [-hr] <unsigned int>\n\n"
                   "\t-h\tHelp\n\n"
                   "\t-r\tRecursive")
-            return
+            sys.exit()
         elif opt == "-r":
             recurse = True
 
     try:
         usr_in = int(sys.argv[-1])
-    except ValueError:
-        print("Usage: python3 " + basename(argv[0]) + " [-hr] <unsigned int>")
-        return
+    except ValueError as e:
+        print(e)
+        sys.exit(1)
 
     if usr_in < 1:
         print("Error: Number is less than 1")
-        return
+        sys.exit(1)
 
     print("Roman Numeral Generator  Copyright (C) 2018  Elliott Sobek\n"
           "This program comes with ABSOLUTELY NO WARRANTY.\n"
