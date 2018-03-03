@@ -17,6 +17,8 @@
 import sys
 import getopt
 
+from os.path import basename
+
 num_lookup = [(1, 'I'), (5, 'V'), (10, 'X'), (50, 'L'), (100, 'C'), (500, 'D'), (1000, 'M'), (5000, '\u2181'),
               (10000, '\u2182'), (50000, '\u2187'), (100000, '\u2188')]
 
@@ -89,22 +91,22 @@ def generate_numeral(num):
     return ''.join(result)
 
 
-def main(argv):
+def main(argc=len(sys.argv), argv=sys.argv):
     recurse = False
 
-    if len(sys.argv) < 2 or len(sys.argv) > 3:
-        print("Usage: python3 RomNumGen.py [-hr]")
+    if argc < 2 or argc > 3:
+        print("Usage: python3 " + basename(argv[0]) + " [-hr]")
         return
 
     try:
         opts, args = getopt.getopt(argv, "hr")
     except getopt.GetoptError:
-        print("python3 RomNumGen.py [-hr] <unsigned int>")
+        print("python3 " + basename(argv[0]) + " [-hr] <unsigned int>")
         return
 
     for opt, args in opts:
         if opt == "-h":
-            print("Usage: python3 RomNumGen.py [-hr] <unsigned int>\n\n"
+            print("Usage: python3 " + basename(argv[0]) + " [-hr] <unsigned int>\n\n"
                   "\t-h\tHelp\n\n"
                   "\t-r\tRecursive")
             return
@@ -114,14 +116,14 @@ def main(argv):
     try:
         usr_in = int(sys.argv[-1])
     except ValueError:
-        print("Usage: python3 RomNumGen.py [-hr] <unsigned int>")
+        print("Usage: python3 " + basename(argv[0]) + " [-hr] <unsigned int>")
         return
 
     if usr_in < 1:
         print("Error: Number is less than 1")
         return
 
-    print("Roman Numeral Generator  Copyright (C) 2017  Elliott Sobek\n"
+    print("Roman Numeral Generator  Copyright (C) 2017    Elliott Sobek\n"
           "This program comes with ABSOLUTELY NO WARRANTY.\n"
           "This is free software, and you are welcome to redistribute it under certain conditions.\n")
 
@@ -132,4 +134,4 @@ def main(argv):
     return
 
 
-main(sys.argv[1:])
+main()
