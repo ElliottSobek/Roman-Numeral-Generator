@@ -95,7 +95,7 @@ def main(argc=len(sys.argv), argv=sys.argv):
     recurse = False
 
     if argc < 2 or argc > 3:
-        print("Usage: python3 " + basename(argv[0]) + " [-hr]")
+        print("Usage: python3 " + basename(argv[0]) + " [-hr] <unsigned int>")
         sys.exit(1)
 
     try:
