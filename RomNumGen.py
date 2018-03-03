@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 #     Roman Numeral Generator; Given a decimal number the roman numeral
 #     equivalent will be generated.
 #     Copyright (C) 2017  Elliott Sobek
@@ -91,8 +93,8 @@ def main(argv):
     recurse = False
 
     if len(sys.argv) < 2 or len(sys.argv) > 3:
-            print("Usage: python3 RomNumGen.py [-hr]")
-            return
+        print("Usage: python3 RomNumGen.py [-hr]")
+        return
 
     try:
         opts, args = getopt.getopt(argv, "hr")
@@ -128,5 +130,6 @@ def main(argv):
     else:
         print(generate_numeral(usr_in))
     return
+
 
 main(sys.argv[1:])
