@@ -2,7 +2,7 @@
 
 #     Roman Numeral Generator; Given a decimal number the roman numeral
 #     equivalent will be generated.
-#     Copyright (C) 2017  Elliott Sobek
+#     Copyright (C) 2018  Elliott Sobek
 #
 #     This program is free software: you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -123,7 +123,7 @@ def main(argc=len(sys.argv), argv=sys.argv):
         print("Error: Number is less than 1")
         return
 
-    print("Roman Numeral Generator  Copyright (C) 2017    Elliott Sobek\n"
+    print("Roman Numeral Generator  Copyright (C) 2018  Elliott Sobek\n"
           "This program comes with ABSOLUTELY NO WARRANTY.\n"
           "This is free software, and you are welcome to redistribute it under certain conditions.\n")
 
