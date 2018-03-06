@@ -107,8 +107,8 @@ def main(argc=len(sys.argv), argv=sys.argv):
     for opt, args in opts:
         if opt == "-h":
             print("Usage: python3 " + basename(argv[0]) + " [-hr] <unsigned int>\n\n"
-                  "\t-h\tHelp\n\n"
-                  "\t-r\tRecursive")
+                                                          "\t-h\tHelp\n\n"
+                                                          "\t-r\tRecursive")
             sys.exit()
         elif opt == "-r":
             recurse = True
