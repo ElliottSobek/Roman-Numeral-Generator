@@ -14,9 +14,9 @@
 #     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #     GNU General Public License for more details.
 
+from os.path import basename
 from sys import argv, exit
 from getopt import getopt, GetoptError
-from os.path import basename
 
 num_lookup = [(1, 'I'), (5, 'V'), (10, 'X'), (50, 'L'), (100, 'C'), (500, 'D'), (1000, 'M'), (5000, '\u2181'),
               (10000, '\u2182'), (50000, '\u2187'), (100000, '\u2188')]
@@ -102,7 +102,7 @@ def main(argc=len(argv), argvs=argv):
         print(e.msg)
         exit(1)
     recurse = False
-    
+
     for opt, args in opts:
         if opt == "-h":
             print("Usage: python3 " + basename(argvs[0]) + " [-hr] <unsigned int>\n\n"
