@@ -109,7 +109,7 @@ def main(argc=len(sys.argv), argv=sys.argv):
             print("Usage: python3 " + basename(argv[0]) + " [-hr] <unsigned int>\n\n"
                                                           "\t-h\tHelp\n\n"
                                                           "\t-r\tRecursive")
-            sys.exit()
+            sys.exit(1)
         elif opt == "-r":
             recurse = True
 
@@ -125,7 +125,7 @@ def main(argc=len(sys.argv), argv=sys.argv):
 
     print("Roman Numeral Generator  Copyright (C) 2018  Elliott Sobek\n"
           "This program comes with ABSOLUTELY NO WARRANTY.\n"
-          "This is free software, and you are welcome to redistribute it under certain conditions.\n")
+          "This is free software, and you are welcome to redistribute it under certain conditions.")
 
     if recurse:
         print(recurse_gn(usr_in))
