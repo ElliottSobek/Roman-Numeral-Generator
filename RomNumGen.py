@@ -28,6 +28,7 @@ num_lookup = [(1, 'I'), (5, 'V'), (10, 'X'), (50, 'L'), (100, 'C'), (500, 'D'), 
 
 def recurse_gn(num: int):
     if num == 0:
+        print()
         return
 
     for f_i in range(1, len(num_lookup), 1):  # f_i: forward index
@@ -57,7 +58,7 @@ def recurse_gn(num: int):
         prev_asoc = num_asoc
 
 
-def generate_numeral(num: int):
+def generate_numeral(num: int) -> str:
     result = []
 
     while num != 0:
@@ -93,7 +94,7 @@ def generate_numeral(num: int):
     return ''.join(result)
 
 
-def main(argc=len(argv), argvs=argv):
+def main(argc=len(argv), argvs=argv) -> int:
     if argc < 2 or argc > 3:
         print("Usage: python3 " + basename(argvs[0]) + " [h] [qr] <unsigned int>", file=stderr)
         raise SystemExit(1)
@@ -133,7 +134,7 @@ def main(argc=len(argv), argvs=argv):
               "This is free software, and you are welcome to redistribute it under certain conditions.")
 
     if recurse:
-        print(recurse_gn(usr_in))
+        recurse_gn(usr_in)
     else:
         print(generate_numeral(usr_in))
     return 0
