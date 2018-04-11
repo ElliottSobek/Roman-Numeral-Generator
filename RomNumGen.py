@@ -98,7 +98,7 @@ def main(argc=len(argv), argvs=argv) -> int:
     exit_failure = 1
     exit_success = 0
 
-    if argc < 2 or argc > 4:
+    if argc < 2 or argc > 3:
         print("Usage: python3 " + basename(argvs[0]) + " [h] [qr] <unsigned int>", file=stderr)
         raise SystemExit(exit_failure)
 
