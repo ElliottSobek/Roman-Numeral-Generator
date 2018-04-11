@@ -96,7 +96,6 @@ def generate_numeral(num: int) -> str:
 
 def main(argc=len(argv), argvs=argv) -> int:
     exit_failure = 1
-    exit_success = 0
 
     if argc < 2 or argc > 3:
         print("Usage: python3 " + basename(argvs[0]) + " [h] [qr] <unsigned int>", file=stderr)
@@ -140,7 +139,7 @@ def main(argc=len(argv), argvs=argv) -> int:
         recurse_gn(usr_in)
     else:
         print(generate_numeral(usr_in))
-    return exit_success
+    return 0
 
 
 main()
