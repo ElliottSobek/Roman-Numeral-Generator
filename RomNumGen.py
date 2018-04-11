@@ -22,6 +22,9 @@ import getopt
 from sys import argv, stderr
 from os.path import basename
 
+EXIT_FAILURE = 1
+EXIT_SUCCESS = 0
+
 num_lookup = [(1, 'I'), (5, 'V'), (10, 'X'), (50, 'L'), (100, 'C'), (500, 'D'), (1000, 'M'), (5000, '\u2181'),
               (10000, '\u2182'), (50000, '\u2187'), (100000, '\u2188')]
 
@@ -97,13 +100,13 @@ def generate_numeral(num: int) -> str:
 def main(argc=len(argv), argvs=argv) -> int:
     if argc < 2 or argc > 3:
         print("Usage: python3 " + basename(argvs[0]) + " [h] [qr] <unsigned int>", file=stderr)
-        raise SystemExit(1)
+        raise SystemExit(EXIT_FAILURE)
 
     try:
         opts, args = getopt.getopt(argvs[1:], "hrq")
     except getopt.GetoptError as e:
         print(e.msg, file=stderr)
-        raise SystemExit(1)
+        raise SystemExit(EXIT_FAILURE)
     recurse = False
     quiet = False
 
@@ -122,11 +125,11 @@ def main(argc=len(argv), argvs=argv) -> int:
         usr_in = int(argvs[-1])
     except ValueError as e:
         print(e, file=stderr)
-        raise SystemExit(1)
+        raise SystemExit(EXIT_FAILURE)
 
     if usr_in < 1:
         print("Error: Number is less than 1", file=stderr)
-        raise SystemExit(1)
+        raise SystemExit(EXIT_FAILURE)
 
     if not quiet:
         print("Roman Numeral Generator  Copyright (C) 2018  Elliott Sobek (elliottsobek@gmail.com)\n"
@@ -137,7 +140,7 @@ def main(argc=len(argv), argvs=argv) -> int:
         recurse_gn(usr_in)
     else:
         print(generate_numeral(usr_in))
-    return 0
+    return EXIT_SUCCESS
 
 
 main()
