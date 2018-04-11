@@ -31,7 +31,7 @@ def recurse_gn(num: int):
         print()
         return
 
-    for f_i in range(1, len(num_lookup), 1):  # f_i: forward index
+    for f_i in range(1, len(num_lookup)):  # f_i: forward index
 
         for b_i in range(f_i - 1, -1, -1):  # b_i: backwards index
             prev_asoc = num_lookup[b_i]
@@ -63,7 +63,7 @@ def generate_numeral(num: int) -> str:
 
     while num != 0:
 
-        for f_i in range(1, len(num_lookup), 1):  # f_i: forward index
+        for f_i in range(1, len(num_lookup)):  # f_i: forward index
 
             for b_i in range(f_i - 1, -1, -1):  # b_i: backwards index
                 prev_asoc = num_lookup[b_i]
