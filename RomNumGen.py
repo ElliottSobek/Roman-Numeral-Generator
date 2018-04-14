@@ -23,10 +23,10 @@ from sys import argv, stderr
 from os.path import basename
 
 num_lookup = [(1, 'I'), (5, 'V'), (10, 'X'), (50, 'L'), (100, 'C'), (500, 'D'), (1000, 'M'), (5000, '\u2181'),
-              (10000, '\u2182'), (50000, '\u2187'), (100000, '\u2188')]
+              (10000, '\u2182'), (50000, '\u2187'), (100000, '\u2188'), (0, '')]
 
 
-def recurse_gn(num: int):
+def recurse_gn(num: int) -> str:  # Return a string
     if num == 0:
         print()
         return
@@ -40,12 +40,12 @@ def recurse_gn(num: int):
                 print(prev_asoc[1] + num_lookup[f_i][1], end='')
                 num -= (num_lookup[f_i][0] - prev_asoc[0])
                 recurse_gn(num)
-                return
+                return prev_asoc[1] + num_lookup[f_i][1]
             elif num == (num_lookup[f_i][0] + prev_asoc[0]):
                 print(num_lookup[f_i][1] + prev_asoc[1], end='')
                 num -= (num_lookup[f_i][0] + prev_asoc[0])
                 recurse_gn(num)
-                return
+                return num_lookup[f_i][1] + prev_asoc[1]
 
     prev_asoc = (1, 'I')
     for num_asoc in num_lookup:
@@ -54,7 +54,7 @@ def recurse_gn(num: int):
             print(prev_asoc[1], end='')
             num -= prev_asoc[0]
             recurse_gn(num)
-            return
+            return prev_asoc[1]
         prev_asoc = num_asoc
 
 
